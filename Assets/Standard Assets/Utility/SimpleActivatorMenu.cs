@@ -1,5 +1,5 @@
-using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 #pragma warning disable 618
 namespace UnityStandardAssets.Utility
@@ -8,7 +8,7 @@ namespace UnityStandardAssets.Utility
     {
         // An incredibly simple menu which, when given references
         // to gameobjects in the scene
-        public GUIText camSwitchButton;
+        public Text camSwitchButton;
         public GameObject[] objects;
 
 
@@ -25,14 +25,14 @@ namespace UnityStandardAssets.Utility
 
         public void NextCamera()
         {
-            int nextactiveobject = m_CurrentActiveObject + 1 >= objects.Length ? 0 : m_CurrentActiveObject + 1;
+            var nextActiveObject = m_CurrentActiveObject + 1 >= objects.Length ? 0 : m_CurrentActiveObject + 1;
 
             for (int i = 0; i < objects.Length; i++)
             {
-                objects[i].SetActive(i == nextactiveobject);
+                objects[i].SetActive(i == nextActiveObject);
             }
 
-            m_CurrentActiveObject = nextactiveobject;
+            m_CurrentActiveObject = nextActiveObject;
             camSwitchButton.text = objects[m_CurrentActiveObject].name;
         }
     }
